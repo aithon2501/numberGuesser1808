@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Number Guesser!</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <p>
+      <span class="number-text">Number</span> Guesser
+    </p>
+  </header>
+  <section class="user-input">
+    <input class="user-input-field" type="number" placeholder="Enter your guess">
+    <p>
+      <input class="user-input-guess-button user-input-button" type="button" value="Guess" disabled>
+      <input class="user-input-clear-button user-input-button" type="button" value="Clear" disabled>
+    </p>
+  </section>
+  <section class="last-guess">
+    <p class="last-guess-text">Your Last Guess Was</p>
+    <p class="last-guess-number-display">
+      XX
+    </p>
+    <p class="last-guess-output">
+      Enter a number between 1 and 100.
+    </p>
+    <input type="button" class="last-guess-reset-button" value="Reset" disabled>
+  </section>
+  
+  <script src="scripts.js"></script>
+</body>
+</html>
