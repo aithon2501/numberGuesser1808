@@ -1,25 +1,30 @@
-var userGuess = document.querySelector('.user-input-field');
+var userGuess = document.querySelector('.user-input-field')
 var guessButton = document.querySelector('.user-input-guess-button');
 var clearButton = document.querySelector('.user-input-clear-button');
 var numberDisplay = document.querySelector('.last-guess-number-display');
 var output = document.querySelector('.last-guess-output');
 var resetButton = document.querySelector('.last-guess-reset-button');
 var randomNumber = generateRandomNumber();
-var parsedNumber = parseNumber();
 
-console.log(resetButton)
+console.log(randomNumber);
 
-userGuess.addEventListener('focus', function() {
+userGuess.addEventListener('keydown', function() {
   guessButton.removeAttribute('disabled');
   clearButton.removeAttribute('disabled');
 })
 
+userGuess.addEventListener('keyup', function (event) {
+  if (event.keyCode === 13) {
+    guessButton.click()
+  }
+})
+
 guessButton.addEventListener('click', function() {
   event.preventDefault();
-  appendNumber();
-  guessButton.setAttribute('disabled', '');
+  numberDisplay.innerText = userGuess.value;
   enableReset();
   checkGuess();
+  guessButton.setAttribute('disabled', '');
 });
 
 clearButton.addEventListener('click', function() {
@@ -29,18 +34,15 @@ clearButton.addEventListener('click', function() {
 });
 
 resetButton.addEventListener('click', function() {
-  location.reload();
+  userGuess.value = '';
+  numberDisplay.innerText = 'XX';
+  output.innerText = "Enter a number between 1 and 100"
+  guessButton.setAttribute('disabled', '');
+  clearButton.setAttribute('disabled', '');
   resetButton.setAttribute('disabled', '');
+  randomNumber = generateRandomNumber();
+  console.log(randomNumber);
 })
-
-function appendNumber() {
-  console.log(parsedNumber)
-  if (parsedNumber !== NaN) {
-    numberDisplay.innerText = userGuess.value;
-  } else {
-    numberDisplay.innerText = 'N/A';
-  }
-}
 
 function enableReset() {
   if (numberDisplay.innerText !== 'XX') {
@@ -49,27 +51,24 @@ function enableReset() {
 }
 
 function generateRandomNumber() {
-  var num = Math.floor(Math.random() * 100);
+  var num = Math.floor(Math.random() * 100 + 1);
   return num;
 }
 
-function parseNumber() {
-  parseInt(userGuess.value);
-}
-
-console.log(randomNumber)
 
 function checkGuess() {
-  if (parsedNumber > 100 || parsedNumber < 1) {
+  var userGuessNumber = parseInt(userGuess.value, 10);
+  if (userGuessNumber > 100 || userGuessNumber < 1) {
     output.innerText = "You're outside the range! Try Again!";
-  } else if (parsedNumber === randomNumber) {
+  } else if (userGuessNumber === randomNumber) {
     output.innerText = "BOOM! You got it!";
-  } else if (parsedNumber > randomNumber) {
+  } else if (userGuessNumber > randomNumber) {
     output.innerText = "Too High! Try Again!";
-  } else if (parsedNumber < randomNumber) {
+  } else if (userGuessNumber < randomNumber) {
     output.innerText = "Too Low! Try Again!";
   } else {
-    output.innerText = "I don't recognize that!"
+    numberDisplay.innerText = 'N/A';
+    output.innerText = "I don't recognize that!";
   }
 }
 
