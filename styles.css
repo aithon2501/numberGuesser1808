@@ -5,8 +5,14 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-/* Header Elements */
+/* Turn off number spinners in number input fields--pulled from CSS Tricks (https://css-tricks.com/snippets/css/turn-off-number-input-spinners/) */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 
+/* Header Elements */
 header {
   height: 6em;
   margin: 0 0 2em 0;
@@ -27,7 +33,18 @@ header p {
   color: #EB008B;
 }
 
-/* User Input Elements */
+/* Input Field Elements */
+.range {
+  font-size: 1.25em;
+}
+
+.input-field::placeholder {
+  color: #E6E7E8;
+}
+
+.range-field {
+  width: 12.5%;
+}
 
 .user-input {
   text-align: center;
@@ -37,33 +54,51 @@ header p {
   width: 500px;
   height: 50px;
   margin-bottom: .5em;
-  font-size: 1.5em;
+  padding-left: 0.25em;
+  font-size: 1.75em;
 }
 
-.user-input-field::placeholder {
-  color: #E6E7E8;
+/* Button Elements */
+.button {
+  background-color: #929497;
+  border-radius: 24px;
+  color: #FFFFFF;
+}
+
+.button:disabled {
+  background-color: #D0D2D3;
+}
+
+.button:hover {
+  background-color: #EB008B;
+}
+
+.range-button {
+  height: 25px;
+  margin-left: .25em;
+  border-radius: 24px;
+  font-size: 0.75em;
+  color: #FFFFFF;
+}
+
+.guess-class-buttons {
+  margin: 0;
 }
 
 .user-input-button {
   width: 225px;
   height: 50px;
-  margin-bottom: 2em;
-  border-radius: 24px;
+  margin: 0.25em 0.25em 1.5em;
   font-size: 1.5em;
-  color: #FFFFFF;
-  background-color: #929497;
 }
 
-.user-input-button:disabled {
-  background-color: #D0D2D3;
+.last-guess-reset-button {
+  width: 500px;
+  height: 50px;
+  font-size: 1.5em;
 }
 
-.user-input-button:hover {
-  background-color: #EB008B;
-}
-
-/* Feedback elements */
-
+/* Text Elements */
 .last-guess {
   text-align: center;
 }
@@ -77,7 +112,7 @@ header p {
 }
 
 .last-guess-output {
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
 }
 
 .last-guess-number-display {
@@ -85,21 +120,4 @@ header p {
   padding: 0;
   font-size: 9em;
   color: #EB008B;
-}
-
-.last-guess-reset-button {
-  width: 500px;
-  height: 50px;
-  border-radius: 24px;
-  font-size: 1.5em;
-  color: #FFFFFF;
-  background-color: #929497;
-}
-
-.last-guess-reset-button:disabled {
-  background-color: #D0D2D3;
-}
-
-.last-guess-reset-button:hover {
-  background-color: #EB008B;
 }
