@@ -13,7 +13,7 @@ userGuess.addEventListener('keydown', function() {
   clearButton.removeAttribute('disabled');
 })
 
-userGuess.addEventListener('keyup', function (event) {
+userGuess.addEventListener('keyup', function(event) {
   if (event.keyCode === 13) {
     guessButton.click()
   }
@@ -54,7 +54,6 @@ function generateRandomNumber() {
   var num = Math.floor(Math.random() * 100 + 1);
   return num;
 }
-
 
 function checkGuess() {
   var userGuessNumber = parseInt(userGuess.value, 10);
