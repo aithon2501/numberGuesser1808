@@ -30,6 +30,7 @@ guessButton.addEventListener('click', function() {
 clearButton.addEventListener('click', function() {
   event.preventDefault();
   userGuess.value = "";
+  userGuess.focus();
   clearButton.setAttribute('disabled', '');
 });
 
