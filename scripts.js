@@ -67,7 +67,6 @@ var randomNumber;
     return num;
 }
 
-
 function checkGuess() {
   var min = parseInt(minimumRange.value, 10);
   var max = parseInt(maximumRange.value, 10)
