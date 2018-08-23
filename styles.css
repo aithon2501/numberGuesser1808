@@ -104,7 +104,8 @@ header p {
 }
 
 .last-guess-text, 
-.last-guess-output {
+.last-guess-output,
+.game-win-message {
   margin: 0;
   font-size: 2em;
   text-decoration: none;
@@ -112,7 +113,11 @@ header p {
 }
 
 .last-guess-output {
-  margin-bottom: 1.5em;
+  height: 2em;
+}
+.game-win-message {
+  height: 2em;
+  color: #EB008B;
 }
 
 .last-guess-number-display {

@@ -7,6 +7,7 @@ var resetButton = document.querySelector('.last-guess-reset-button');
 var rangeButton = document.querySelector('.range-button');
 var minimumRange = document.querySelector('.minimum');
 var maximumRange = document.querySelector('.maximum');
+var winMessage = document.querySelector('.game-win-message');
 var randomNumber;
 
 minimumRange.addEventListener('keydown', function() {
@@ -54,6 +55,7 @@ resetButton.addEventListener('click', function() {
   userGuess.value = '';
   minimumRange.value = '';
   maximumRange.value = '';
+  winMessage.innerText = '';
   numberDisplay.innerText = 'XX';
   output.innerText = "Guess A Number!";
   userGuess.focus();
@@ -78,12 +80,13 @@ function generateRandomNumber(min, max) {
 
 function checkGuess() {
   var min = parseInt(minimumRange.value, 10);
-  var max = parseInt(maximumRange.value, 10)
+  var max = parseInt(maximumRange.value, 10);
   var userGuessNumber = parseInt(userGuess.value, 10);
   if (userGuessNumber > max || userGuessNumber < min) {
     output.innerText = "You're outside the range! Try Again!";
   } else if (userGuessNumber === randomNumber) {
     output.innerText = "BOOM! You got it!";
+    wonGame();
   } else if (userGuessNumber > randomNumber) {
     output.innerText = "Too High! Try Again!";
   } else if (userGuessNumber < randomNumber) {
@@ -92,4 +95,13 @@ function checkGuess() {
     numberDisplay.innerText = 'N/A';
     output.innerText = "I don't recognize that!";
   }
+};
+
+function wonGame() {
+  var min = parseInt(minimumRange.value, 10);
+  var max = parseInt(maximumRange.value, 10);
+  minimumRange.value = min -= 10;
+  maximumRange.value = max += 10;
+  winMessage.innerText = 'Play Again! The Range Has Changed!';
+  randomNumber = generateRandomNumber(minimumRange, maximumRange);
 };
