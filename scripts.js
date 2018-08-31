@@ -105,3 +105,5 @@ function wonGame() {
   winMessage.innerText = 'Play Again! The Range Has Changed!';
   randomNumber = generateRandomNumber(minimumRange, maximumRange);
 };
+
+// adding to test github settings
