@@ -106,4 +106,4 @@ function wonGame() {
   randomNumber = generateRandomNumber(minimumRange, maximumRange);
 };
 
-//add to check git settings
+// adding to test github settings
